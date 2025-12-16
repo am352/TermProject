@@ -8,26 +8,40 @@
 <body>
 
 <header class="header">
-    <div class="logo"><a href="../index.html">CampusBooks</a></div>
-    <nav class="navbar">
-        <a href="../shop/shop.html">Continue Shopping</a>
-    </nav>
+  <div class="logo">
+    <a href="/index.html">CampusBooks</a>
+  </div>
+  <nav class="navbar">
+    <a href="/index.html">Home</a>
+    <a href="/shop/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/profile" class="login-btn">Profile</a>
+    <a href="/cart/cart.html" class="cart-icon">🛒
+    </a>
+  </nav>
 </header>
+
 
 <section class="about">
     <h2>Your Cart</h2>
-    <div class="about-cards">
-        <div class="card">
-            <p><strong>Calculus 10th Edition</strong></p>
-            <p>Quantity: 1</p>
-            <p>Price: $35.00</p>
-        </div>
-    </div>
+    <div id="cart-items" class="about-cards"></div>
+    <p id="cart-total" style="margin-top:10px; font-weight:bold;"></p>
 
-    <a href="/checkout/checkout.html" class="btn-primary" style="margin-top:20px; display:inline-block;">
-        Checkout
-    </a>
+   <div class="cart-actions">
+    <button id="checkout-btn" class="btn-primary">Checkout</button>
+    <button id="clear-cart-btn" class="btn-primary">Clear Cart</button>
+</div>
+
 </section>
+
+<footer class="footer">
+        <p> CSC 317 — Find us on <a href="https://github.com/am352/TermProject/tree/main">Github!</a></p>
+</footer>
+
+<script src="../js/cart.js"></script>
+<script src="/js/header.js"></script>
+
 
 </body>
 </html>
