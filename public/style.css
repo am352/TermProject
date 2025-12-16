@@ -162,9 +162,7 @@ body {
 }
 
 
-/* ----------------------
-   Responsive Design
------------------------ */
+/* Responsive Design */
 
 @media (max-width: 700px) {
     .header {
@@ -276,3 +274,137 @@ body {
     padding: 8px;
     margin: 0 auto;
 }
+
+/* SHOP SEARCH BAR */
+
+.search-bar {
+    max-width: 700px;
+    margin: 30px auto 0;
+    display: flex;
+    gap: 12px;
+}
+
+.search-bar input {
+    flex: 0 0 70%;     
+    padding: 14px 16px;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    border: none;
+    outline: none;
+}
+
+.search-bar button {
+    flex: 1;            
+    padding: 14px 0;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+}
+
+/* LOGIN / AUTH PAGES */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.auth-form .input-field {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    border: none;
+    outline: none;
+}
+
+.auth-form .input-field:focus {
+    box-shadow: 0 0 0 3px rgba(60, 163, 116, 0.35);
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.05rem;
+}
+
+/* PROFILE PAGE */
+
+.profile-card {
+    max-width: 450px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    color: black;
+}
+
+.profile-card h2 {
+    margin-bottom: 20px;
+}
+
+.profile-card h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-card hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* Login/Register page adjustments */
+.login-register {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.login-register a.btn-secondary {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: #eefaf3;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  transition: 0.2s ease;
+}
+
+.login-register a.btn-secondary:hover {
+  background: #ddf5e8;
+}
+
+/* PROFILE PAGE STYLING */
+.profile-page {
+    background: var(--green-light);
+    min-height: calc(100vh - 160px); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    padding: 40px 20px;
+    
+}
+
+
+.profile-card {
+    max-width: 450px;
+    margin: 0 auto 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    color: black;
+}
+
+.profile-page li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
