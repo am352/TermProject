@@ -1,16 +1,17 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const { createUser, findUserByUsername, findUserByEmail } = require('../db/db');
+const { createUser, findUserByUsername, findUserByEmail } = require('../db');
 
 const router = express.Router();
 
+// --- LOGIN PAGE ---
 router.get('/login', (req, res) => {
   res.render('auth/login', { title: 'Login' });
 });
 
+// --- LOGIN POST ---
 router.post('/login', async (req, res, next) => {
   const { username, password } = req.body;
-
   try {
     if (!username || !password) {
       req.session.error = 'Please provide username and password.';
@@ -29,20 +30,24 @@ router.post('/login', async (req, res, next) => {
       return res.redirect('/login');
     }
 
+    // Save session info
     req.session.userId = user.id;
     req.session.username = user.username;
     req.session.email = user.email;
+    req.session.createdAt = user.created_at;
 
-    res.redirect('/dashboard');
+    res.redirect('/profile');
   } catch (err) {
     next(err);
   }
 });
 
+// --- REGISTER PAGE ---
 router.get('/register', (req, res) => {
   res.render('auth/register', { title: 'Register' });
 });
 
+// --- REGISTER POST ---
 router.post('/register', async (req, res, next) => {
   const { email, username, password, confirmPassword } = req.body;
 
@@ -68,7 +73,6 @@ router.post('/register', async (req, res, next) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-
     await createUser({ username, email, passwordHash });
 
     req.session.success = 'Account created. Please log in.';
@@ -78,6 +82,7 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
+// --- LOGOUT ---
 router.post('/logout', (req, res, next) => {
   req.session.destroy(err => {
     if (err) return next(err);
