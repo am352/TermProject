@@ -29,7 +29,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 // 1 hour
+      maxAge: 1000 * 60 * 60 
     }
   })
 );
@@ -59,9 +59,21 @@ app.use((req, res, next) => {
 app.use('/', authRoutes);
 app.use('/', profileRoutes);
 
+app.get('/current-user', (req, res) => {
+  if (req.session.userId) {
+    res.json({
+      id: req.session.userId,
+      username: req.session.username,
+      email: req.session.email
+    });
+  } else {
+    res.json(null); // No user logged in
+  }
+});
+
 // Root
 app.get('/', (req, res) => {
-  if (req.session.userId) return res.redirect('/dashboard');
+  if (req.session.userId) return res.redirect('/profile');
   res.redirect('/login');
 });
 
