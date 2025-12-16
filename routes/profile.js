@@ -1,19 +1,15 @@
 const express = require('express');
-const { requireLogin } = require('../middleware/auth');
-const { findUserById } = require('../db/db');
+const { requireLogin } = require('../middleware/auth'); 
+const { findUserById } = require('../db'); 
 
 const router = express.Router();
-
-router.get('/dashboard', requireLogin, (req, res) => {
-  res.render('dashboard', { title: 'Dashboard' });
-});
 
 router.get('/profile', requireLogin, async (req, res, next) => {
   try {
     const user = await findUserById(req.session.userId);
     if (!user) {
       req.session.error = 'User not found.';
-      return res.redirect('/login');
+      return res.redirect('/profile');
     }
     res.render('profile', { title: 'Your Profile', user });
   } catch (err) {
