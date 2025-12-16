@@ -29,20 +29,29 @@ db.serialize(() => {
         VALUES (?, ?, ?, ?, ?, 1)
       `);
 
-      const seed = [
-        ['Introduction to Computer Science', 'CS101 textbook.', 5999, 'Computer Science', 10],
-        ['Data Structures and Algorithms', 'Advanced algorithms.', 8999, 'Computer Science', 8],
-        ['Discrete Mathematics', 'Sets, proofs, logic.', 7499, 'Mathematics', 12],
-        ['Linear Algebra', 'Matrices and vectors.', 6999, 'Mathematics', 6],
-        ['Introduction to Psychology', 'Foundations of psychology.', 4999, 'Social Science', 5],
-        ['World History: Modern Era', 'Modern history overview.', 6599, 'History', 7],
-        ['Organic Chemistry I', 'Intro to O-chem.', 9999, 'Chemistry', 4],
-        ['Physics for Scientists and Engineers', 'Calculus-based physics.', 8999, 'Physics', 9],
-        ['Introduction to Statistics', 'Stats fundamentals.', 5499, 'Mathematics', 11],
-        ['Business Finance', 'Corporate finance.', 7999, 'Business', 3],
-        ['Art History Survey', 'Major works and movements.', 5599, 'Art', 6],
-        ['Technical Writing Handbook', 'Guide to documentation.', 3999, 'Writing', 15]
-      ];
+    const seed = [
+      ['Campbell Biology', 'Introductory biology textbook.', 7500, 'Biology', 10],
+      ['Principles of Economics', 'Economics textbook by Mankiw.', 10000, 'Economics', 8],
+      ['Calculus: Early Transcendentals', 'Calculus textbook by Stewart.', 15500, 'Mathematics', 6],
+      ['Psychology', 'Psychology textbook by David G. Myers.', 14000, 'Psychology', 7],
+      ['University Physics', 'Physics textbook by Young & Freedman.', 17500, 'Physics', 5],
+      ['Artificial Intelligence: A Modern Approach', 'AI textbook by Russell & Norvig.', 9000, 'Computer Science', 4],
+      ['Introduction to Algorithms', 'Algorithms textbook (CLRS).', 5500, 'Computer Science', 9],
+      ['Economics', 'Economics textbook by Samuelson & Nordhaus.', 14000, 'Economics', 6],
+      ['Statistics', 'Introductory statistics textbook.', 11000, 'Mathematics', 8],
+      ['Writing/Composition Guide', 'General writing and composition guide.', 2000, 'Writing', 12],
+      ['Linear Algebra', 'Linear algebra concepts and applications.', 7000, 'Mathematics', 6],
+      ['Discrete Mathematics', 'Logic, proofs, and discrete structures.', 7500, 'Computer Science', 10]
+
+      ['Master Theory', 'Introductory Music Theory textbook', 7500, 'Music Theory', 10]
+      ['Introduction to Philosophy', 'Introductory Philosophy textbook.', 7500, 'Philosophy', 10]
+      ['Elements of Art', 'A textbook on art concepts and techniques.', 7500, 'Art', 10]
+      ['Cell Biology', 'Complex topics regarding Cell Biology.', 7500, 'Biology', 10]
+      ['Organic Chemistry', 'Complex topics regarding Organic Chemistry.', 7500, 'Chemistry', 10]
+      ['Applied Linear Algebra', 'Applied Linear Algebra concepts and applications.', 7500, 'Linear Algebra', 10]
+      ['World History', 'Introductory World History textbook.', 7500, 'History', 10]
+      ['Linear Algebra Done Right', 'A textbook on linear algebra concepts and applications.', 7500, 'Linear Algebra', 10]
+    ];
 
       for (const p of seed)
         stmt.run(...p);
