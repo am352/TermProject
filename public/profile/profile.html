@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile – CampusBooks</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><a href="/index.html">CampusBooks</a></div>
+  <nav class="navbar">
+    <a href="/index.html">Home</a>
+    <a href="/shop/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/profile" class="login-btn">Profile</a>
+    <a href="/cart/cart.html" class="cart-icon">🛒
+    </a>
+  </nav>
+</header>
+
+<section class="hero" style="padding: 60px;">
+  <div class="hero-content profile-card">
+    <h2>Your Profile</h2>
+    <p><strong>Email:</strong> <span id="user-email"></span></p>
+
+    <hr>
+
+    <h3>Cart Summary</h3>
+    <p>Items in cart: <strong><span class="cart-count">0</span></strong></p>
+    <button class="btn-primary logout-btn" style="margin-top:20px;">Logout</button>
+  </div>
+</section>
+
+<script src="/js/header.js"></script>
+<script>
+  // Fetch user info for profile content
+  async function loadProfile() {
+    const response = await fetch('/current-user');
+    const user = await response.json();
+    if (!user) {
+      window.location.href = '/login/login.html';
+      return;
+    }
+    document.getElementById('user-email').textContent = user.email;
+  }
+  loadProfile();
+</script>
+</body>
+</html>
