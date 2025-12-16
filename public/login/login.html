@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login – CampusBooks</title>
-    <link rel="stylesheet" href="../style.css" />
+  <meta charset="UTF-8">
+  <title>Login – CampusBooks</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
 <header class="header">
-    <div class="logo"><a href="../index.html">CampusBooks</a></div>
-    <nav class="navbar">
-        <a href="../shop/shop.html">Shop</a>
-        <a href="../cart/cart.html">🛒</a>
-    </nav>
+  <div class="logo">
+    <a href="/index.html">CampusBooks</a>
+  </div>
+  <nav class="navbar">
+    <a href="/index.html">Home</a>
+    <a href="/shop/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/login" class="login-btn">Login</a>
+    <a href="/profile" class="login-btn">Profile</a>
+    <a href="/cart/cart.html" class="cart-icon">🛒
+      <span class="cart-count">0</span>
+    </a>
+  </nav>
 </header>
 
 <section class="hero" style="padding: 60px;">
-    <div class="hero-content" style="max-width: 400px;">
-        <h2>Login</h2>
-        <p>Access your account and view your cart.</p>
+  <div class="hero-content" style="max-width: 400px;">
+    <h2>Login</h2>
+    <p>Access your account and view your cart.</p>
 
-        <form class="login-form">
-            <input type="email" placeholder="Email" class="input-field" required>
-            <input type="password" placeholder="Password" class="input-field" required>
-            <button class="btn-primary" style="margin-top: 20px;">Login</button>
-        </form>
-    </div>
+    <form action="/login" method="POST" class="auth-form">
+      <input type="text" name="username" placeholder="Username" class="input-field" required>
+      <input type="password" name="password" placeholder="Password" class="input-field" required>
+      <button class="btn-primary" style="margin-top: 20px;">Login</button>
+    </form>
+  </div>
 </section>
 
+<script src="/js/header.js"></script>
 </body>
 </html>
