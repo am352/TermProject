@@ -1,15 +1,80 @@
-extends layout
+doctype html
+html
+  head
+    meta(charset="utf8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title #{title}
+    link(rel="stylesheet", href="/style.css")
+  body
+    // HEADER
+    header.header
+      div.logo
+        a(href="/") CampusBooks
+      nav.navbar
+        a(href="/") Home
+        a(href="/shop/shop.html") Shop
+        a(href="/about.html") About
+        a(href="/faq.html") FAQ
+        if currentUser
+          a(href="/profile") Profile
+        else
+          a(href="/login" class="login-btn") Login
+        a(href="/cart/cart.html" class="cart-icon") 🛒
 
-block content
-  h1 Your Profile
-  dl
-    dt Username
-    dd #{user.username}
+    // MAIN CONTENT
+    main.container.profile-page
+      include partials/messages
 
-    dt Email
-    dd #{user.email}
+      if currentUser
+        section.profile-card
+          h2 Your Profile
+          dl
+            dt  Username:
+            dd #{user.username}
+            dt Email:
+            dd #{user.email}
+            dt Account Created:
+            dd #{user.created_at}
 
-    dt Account Created
-    dd #{user.created_at}
+          h3 Purchase History
+          ul#purchase-history
+            li No purchases yet. Complete a checkout from the shop.
 
-  a(href="/dashboard") Back to dashboard
+          // Inline script to read lastOrder from localStorage
+          script.
+            (function () {
+              var list = document.getElementById('purchase-history');
+              if (!list) return;
+              try {
+                var raw = localStorage.getItem('lastOrder');
+                if (!raw) return;
+                var order = JSON.parse(raw);
+                if (!order || !Array.isArray(order.items) || !order.items.length) return;
+                list.innerHTML = '';
+                var date = new Date(order.date || Date.now()).toLocaleDateString();
+                order.items.forEach(function (item) {
+                  var li = document.createElement('li');
+                  li.textContent = item.name + ' x ' + item.qty + ' on ' + date;
+                  list.appendChild(li);
+                });
+              } catch (e) {
+                console.error('Failed to load purchase history', e);
+              }
+            })();
+
+        // Logout button underneath profile card
+        form(method="POST", action="/logout" style="text-align: center; margin-top: 20px;")
+          button(type="submit" class="btn-primary") Logout
+
+      else
+        // Logged-out view
+        section.hero(style="padding: 60px; text-align: center;")
+          div.hero-content(style="max-width: 400px; margin: 0 auto;")
+            h2 Welcome!
+            p Please log in to view your profile and purchase history.
+            a(href="/login" class="btn-primary") Login
+            a(href="/register" class="btn-secondary") Register
+
+    // FOOTER
+    footer.footer
+      small Built with Express, Pug, SQLite, sessions, and bcryptjs.
