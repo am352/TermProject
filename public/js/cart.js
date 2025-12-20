@@ -25,7 +25,7 @@ function renderCart() {
   container.innerHTML = '';
 
   if (!cart.length) {
-    container.innerHTML = '<p>Your cart is currently empty.</p>';
+    container.innerHTML = '<p class = "empty-message">Your cart is currently empty.</p>';
     totalEl.textContent = '';
     return;
   }
