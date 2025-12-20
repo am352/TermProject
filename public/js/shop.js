@@ -52,16 +52,6 @@ function handleAddToCartClick(event) {
   showAddedFeedback(target);
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.getElementById('search-form');
-  if (form) {
-    form.addEventListener('submit', handleSearch);
-  }
-
-  document.addEventListener('click', handleAddToCartClick);
-});
-
 function showAddedFeedback(button) {
   var originalText = button.textContent;
 
@@ -73,3 +63,58 @@ function showAddedFeedback(button) {
     button.style.pointerEvents = 'auto';
   }, 1200);
 }
+
+async function loadProducts() {
+  try {
+    const res = await fetch('/api/products');
+    const products = await res.json();
+
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.name = product.name;
+      card.dataset.subject = product.subject_family;
+
+      card.innerHTML = `
+        <img src="/images/${product.image_path}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p class="price">$${(product.price_cents / 100).toFixed(2)}</p>
+        <p class="condition">Available</p>
+
+        <a href="../product/product.html?id=${product.id}"
+           class="btn-secondary">
+           View Details
+        </a>
+
+        <a href="#"
+           class="btn-primary small add-to-cart"
+           data-name="${product.name}"
+           data-price="${(product.price_cents / 100).toFixed(2)}">
+           Add to Cart
+        </a>
+      `;
+
+      grid.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error('Failed to load products', err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadProducts();
+
+  var form = document.getElementById('search-form');
+  if (form) {
+    form.addEventListener('submit', handleSearch);
+  }
+
+  document.addEventListener('click', handleAddToCartClick);
+});
+
