@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Product – CampusBooks</title>
-  <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details – CampusBooks</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <header class="header">
-    <div class="logo"><a href="../index.html">CampusBooks</a></div>
-    <nav class="navbar">
-      <a href="../index.html">Home</a>
-      <a href="../shop/shop.html">Shop</a>
-      <a href="../about.html">About</a>
-      <a href="../faq.html">FAQ</a>
-      <a href="/login" class="login-btn">Login</a>
-      <a href="../cart/cart.html" class="cart-icon">🛒</a>
-    </nav>
-  </header>
 
-  <section class="hero" style="padding: 60px;">
-    <div class="hero-content">
-      <img src="../images/placeholder-book.png" alt="Book cover" style="max-width: 200px; margin-bottom: 20px;">
-      <h2>Calculus 10th Edition</h2>
-      <p class="price">$35.00</p>
-      <p>Description: A classic calculus textbook widely used in universities.</p>
-      <a href="../cart/cart.html"
-         class="btn-primary add-to-cart"
-         data-name="Calculus 10th Edition"
-         data-price="35.00">
-        Add to Cart
-      </a>
+<header class="header">
+  <div class="logo">
+    <a href="/index.html">CampusBooks</a>
+  </div>
+
+  <nav class="navbar">
+    <a href="/index.html">Home</a>
+    <a href="/shop/shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/profile" class="login-btn">Profile</a>
+    <a href="/cart/cart.html" class="cart-icon">🛒</a>
+  </nav>
+</header>
+
+<main class="product-page">
+  <div class="product-details">
+    <img id="product-image" src="" alt="Product Image" class="product-image">
+    <div class="product-info">
+      <h1 id="product-name"></h1>
+      <p id="product-description"></p>
+      <p>Price: $<span id="product-price"></span></p>
+      <p>Subject: <span id="product-subject"></span></p>
+      <p style = "display: none">In Stock: <span id="product-stock" style = "display: none"></span></p>
+      <button id="add-to-cart-btn" class="btn-primary">Add to Cart</button>
     </div>
-  </section>
+  </div>
+</main>
 
-  <script src="../js/shop.js"></script>
+<footer class="footer">
+  <p>CSC 317 — Find us on <a href="https://github.com/am352/TermProject/tree/main">Github!</a></p>
+</footer>
+
+<script src="/js/product.js"></script>
 </body>
 </html>
