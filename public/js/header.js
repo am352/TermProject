@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const cartCountSpans = document.querySelectorAll('.cart-count');
   const logoutBtns = document.querySelectorAll('.logout-btn');
 
-  // --- Function to update login/profile link ---
+  // Function to update login/profile link 
   async function updateLoginStatus() {
     let user = null;
     try {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }
 
-  // --- Function to handle logout buttons ---
+  //  Function to handle logout buttons 
   async function setupLogoutButtons() {
     logoutBtns.forEach(btn => {
       btn.addEventListener('click', async () => {
@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
   }
 
-  // --- Initial updates ---
+  // Initial updates 
   updateCartCount();
   updateLoginStatus();
   setupLogoutButtons();
 
-  // --- Listen for storage changes (other tabs) ---
+  //  Listen for storage changes (other tabs) 
   window.addEventListener('storage', updateCartCount);
 
-  // --- Expose function globally for other scripts ---
+  //  Expose function globally for other scripts 
   window.updateCartCount = updateCartCount;
 });
