@@ -5,6 +5,7 @@ const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
+const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 
@@ -70,6 +71,43 @@ app.get('/current-user', (req, res) => {
     res.json(null); // No user logged in
   }
 });
+
+const db = new sqlite3.Database(
+  path.join(__dirname, 'data', 'book-shop.db')
+);
+
+// GET /api/products/:id
+app.get('/api/products/:id', (req, res) => {
+  const id = req.params.id;
+
+  db.get(
+    'SELECT * FROM products WHERE id = ? AND is_active = 1',
+    [id],
+    (err, row) => {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+      if (!row) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+
+      res.json(row);
+    }
+  );
+});
+
+app.get('/api/products', (req, res) => {
+  db.all(
+    'SELECT id, name, price_cents, subject_family, image_path FROM products WHERE is_active = 1',
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+      res.json(rows);
+    }
+  );
+});
+
 
 // Root
 app.get('/', (req, res) => {
