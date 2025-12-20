@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
       saveCart([]);
       renderCart();
 
-      // Optionally clear server-side cart
       try {
         const res = await fetch('/cart/clear', { method: 'POST' });
         if (!res.ok) console.error('Failed to clear server-side cart');
