@@ -3,6 +3,8 @@
 CampusBooks is an eCommerce website that allows students and non-students alike to browse and buy a variety of textbooks.
 (This is a mock website for a term project).
 
+Access our website, deployed through Render: https://campusbooks-tyq5.onrender.com/
+
 ## CampusBooks - Features
 - **Storefront / ShopPage**
   - Textbook grid view, showcasing textbook titles, image preview, and pricing.
