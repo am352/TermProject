@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS products (
   price_cents INTEGER NOT NULL,
   subject_family TEXT,
   in_stock INTEGER NOT NULL DEFAULT 0,
+  image_path TEXT,
   is_active INTEGER NOT NULL DEFAULT 1
 );
 
